@@ -8,7 +8,7 @@ import time
 from logging.config import dictConfig
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-sys.path.insert(1, os.path.join(__location__, "api-key-detector"))
+sys.path.insert(1, os.path.join(__location__, "api_key_detector"))
 
 from config import conf
 
