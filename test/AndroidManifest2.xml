@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.android2.calculator3" platformBuildVersionCode="25" platformBuildVersionName="7.1.1">
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <application android:allowBackup="true" android:fullBackupContent="true" android:icon="@mipmap/ic_launcher_calculator" android:label="@string/app_name" android:resizeableActivity="true" android:roundIcon="@mipmap/ic_launcher_calculator_round" android:supportsRtl="false">
+        <uses-library android:name="com.sec.android.app.multiwindow" android:required="false"/>
+        <meta-data android:name="com.sec.android.support.multiwindow" android:value="true"/>
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:resource="@dimen/app_defaultsize_w"/>
+        <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:resource="@dimen/app_defaultsize_h"/>
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:resource="@dimen/app_minimumsize_w"/>
+        <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:resource="@dimen/app_minimumsize_h"/>
+        <activity android:exported="true" android:name="com.xlythe.calculator.material.Calculator" android:theme="@style/Theme.Calculator" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity-alias android:enabled="false" android:exported="true" android:icon="@drawable/ic_launcher_purple" android:name="com.xlythe.calculator.material.Theme.Purple" android:roundIcon="@drawable/ic_launcher_round_purple" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_purple"/>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:exported="true" android:icon="@drawable/ic_launcher_blue" android:name="com.xlythe.calculator.material.Theme.Blue" android:roundIcon="@drawable/ic_launcher_round_blue" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_blue"/>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:exported="true" android:icon="@drawable/ic_launcher_teal" android:name="com.xlythe.calculator.material.Theme.Teal" android:roundIcon="@drawable/ic_launcher_round_teal" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_teal"/>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:exported="true" android:icon="@drawable/ic_launcher_green" android:name="com.xlythe.calculator.material.Theme.Green" android:roundIcon="@drawable/ic_launcher_round_green" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_green"/>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:exported="true" android:icon="@drawable/ic_launcher_cyan" android:name="com.xlythe.calculator.material.Theme.Cyan" android:roundIcon="@drawable/ic_launcher_round_cyan" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_cyan"/>
+        </activity-alias>
+        <activity-alias android:enabled="true" android:exported="true" android:icon="@drawable/ic_launcher_orange" android:name="com.xlythe.calculator.material.Theme.Orange" android:roundIcon="@drawable/ic_launcher_round_orange" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_orange"/>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:exported="true" android:icon="@drawable/ic_launcher_red" android:name="com.xlythe.calculator.material.Theme.Red" android:roundIcon="@drawable/ic_launcher_round_red" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_red"/>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:exported="true" android:icon="@drawable/ic_launcher_pink" android:name="com.xlythe.calculator.material.Theme.Pink" android:roundIcon="@drawable/ic_launcher_round_pink" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_pink"/>
+        </activity-alias>
+        <activity-alias android:enabled="false" android:exported="true" android:icon="@drawable/ic_launcher_grey" android:name="com.xlythe.calculator.material.Theme.Grey" android:roundIcon="@drawable/ic_launcher_round_grey" android:targetActivity="com.xlythe.calculator.material.Calculator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.APP_CALCULATOR"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
+            </intent-filter>
+            <layout android:defaultHeight="@dimen/app_defaultsize_h" android:defaultWidth="@dimen/app_defaultsize_w" android:gravity="end|center|top" android:minHeight="@dimen/app_minimumsize_h" android:minWidth="@dimen/app_minimumsize_w"/>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcut_grey"/>
+        </activity-alias>
+        <receiver android:name="com.xlythe.calculator.material.widget.CalculatorWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/calculator_widget_info"/>
+        </receiver>
+        <activity android:icon="@drawable/ic_launcher_floating_orange" android:label="@string/app_name" android:name="com.xlythe.calculator.material.floating.FloatingCalculatorCreateShortCutActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:exported="true" android:label="@string/app_name" android:launchMode="singleInstance" android:name="com.xlythe.calculator.material.floating.FloatingCalculatorOpenShortCutActivity" android:theme="@style/TransparentBackground"/>
+        <service android:name="com.xlythe.calculator.material.floating.FloatingCalculator">
+            <intent-filter>
+                <action android:name="android.intent.action.CONFIGURATION_CHANGED"/>
+            </intent-filter>
+        </service>
+        <service android:icon="@drawable/ic_launcher_notification" android:label="@string/app_name" android:name="com.xlythe.calculator.material.service.CalculatorTileService" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.google.android.wearable.beta.app" android:resource="@xml/android_wear_micro_apk"/>
+    </application>
+</manifest>

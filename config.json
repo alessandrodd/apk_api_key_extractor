@@ -1,0 +1,45 @@
+{
+  "key_dump": "local",
+  "local_dump_file" : "apikeys.json",
+  "apks_folder": "apks",
+  "apks_decoded": "apks_decoded",
+  "apks_analyzed": "apks_analyzed",
+  "save_analyzed_apks": false,
+  "apktool": "apktool.jar",
+  "lib_blacklists": [
+    "lib_blacklist.txt"
+  ],
+  "shared_object_sections": [
+    ".rodata",
+    ".text"
+  ],
+  "logging": {
+    "version": 1,
+    "formatters": {
+      "f": {
+        "format": "%(asctime)s %(name)-4s %(levelname)-4s %(message)s",
+        "datefmt": "%m-%d %H:%M"
+      }
+    },
+    "handlers": {
+      "log_file_handler": {
+        "class": "logging.FileHandler",
+        "formatter": "f",
+        "filename": "apk_api_key_extractor.log",
+        "mode": "a",
+        "encoding": "utf-8"
+      },
+      "console_handler": {
+        "class": "logging.StreamHandler",
+        "formatter": "f"
+      }
+    },
+    "root": {
+      "handlers": [
+        "log_file_handler",
+        "console_handler"
+      ],
+      "level": "INFO"
+    }
+  }
+}

@@ -1,3 +1,13 @@
+# Custom additions
+.idea/
+apks/
+apks_decoded/
+apks_analyzed/
+/string_classification/test_results/
+key_dump.json
+*.lock
+**/__pycache__/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
