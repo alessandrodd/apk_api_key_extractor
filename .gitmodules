@@ -1,0 +1,3 @@
+[submodule "api-key-detector"]
+	path = api-key-detector
+	url = https://github.com/alessandrodd/api-key-detector.git
