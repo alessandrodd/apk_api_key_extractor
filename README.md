@@ -5,6 +5,8 @@ For technical details, [check out my thesis (_Automatic extraction of API Keys f
 
 The library responsible for identifying the API Keys is [a standalone project](https://github.com/alessandrodd/api_key_detector).
 
+Searches for API Keys embedded in Android String Resources, Manifest metadata, Java code (included Gradle's BuildConfig), Native code.
+
 ## Requirements
 
 - Java 7+
