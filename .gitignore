@@ -3,6 +3,9 @@
 apks/*
 apks_decoded/*
 apks_analyzed/*
+!apks/README.md
+!apks_analyzed/README.md
+!apks_decoded/README.md
 /string_classification/test_results/
 key_dump.json
 *.lock
