@@ -4,7 +4,7 @@
   "apks_folder": "apks",
   "apks_decoded": "apks_decoded",
   "apks_analyzed": "apks_analyzed",
-  "save_analyzed_apks": false,
+  "save_analyzed_apks": true,
   "apktool": "apktool.jar",
   "lib_blacklists": [
     "lib_blacklist.txt"
