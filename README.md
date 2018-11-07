@@ -25,6 +25,13 @@ $ pip3 install -r requirements.txt
 $ python3 main.py
 ```
 
+## Test
+```bash
+$ git clone https://github.com/alessandrodd/ApiKeyTestApp.git
+$ cd apk_api_key_extractor
+$ python3 main.py --analyze-apk ../ApiKeyTestApp/apk/apikeytestapp_obfuscated.apk
+```
+
 ## Usage
 
 ```bash
