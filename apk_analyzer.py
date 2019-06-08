@@ -12,7 +12,7 @@ from elftools.common.exceptions import ELFError
 from flufl.lock import Lock, AlreadyLockedError, TimeOutError
 from strings_filter_singleton import s_filter
 
-from config import conf
+import config
 from my_model.lib_string import LibString
 from my_model.resource_string import ResourceString
 from my_tools.apktool_yml_parser import ApktoolYmlParser
@@ -25,9 +25,9 @@ LOCK_PREFIX = ".lock"
 logging.getLogger("flufl.lock").setLevel(logging.CRITICAL)  # disable logging for lock module
 
 lib_blacklist = None
-if conf.lib_blacklists:
+if config.lib_blacklists:
     lib_blacklist = set()
-    for txt in conf.lib_blacklists:
+    for txt in config.lib_blacklists:
         for line in open(txt, "r"):
             lib_blacklist.add(line.replace('\n', '').replace('\r', ''))
 
@@ -211,7 +211,7 @@ def extract_native_strings(decoded_apk_folder):
                     # since it would probably not contain any interesting information
                     continue
                 try:
-                    for string in strings(filename, conf.shared_object_sections, 4):
+                    for string in strings(filename, config.shared_object_sections, 4):
                         lib_string = LibString(base_filename, string)
                         if s_filter.pre_filter_mystring(lib_string):
                             lib_strings.add(lib_string)

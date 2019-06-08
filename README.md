@@ -61,16 +61,12 @@ Using the default settings:
 Note that this software is process-safe, meaning that you can start multiple instances of the same script without conflicts. You can also configure the _apks_ folder as a remote folder in a Network File System (NFS) to parallelize the analysis on multiple hosts.
 
 ## Config File Explained
-### config.json
-**key_dump** => Can be **local** or **remote**. If local, the detected API Keys are dumped as json objects in the configured local_dump_file json file. If remote, then **_dbconfig.json_ should be configured**
+### config.yml
+**apks_dir** => The folder containing the .apk files to be analyzed
 
-**local_dump_file** => If key_dump is set to local, the destination file where the API Keys should be dumped
+**apks_decoded_dir** => The folder that will temporarily contain the decompiled apk files
 
-**apks_folder** => The folder containing the .apk files to be analyzed
-
-**apks_decoded** => The folder that will temporarily contain the decompiled apk files
-
-**apks_analyzed** => The folder that will contain the already analyzed .apk files. Each time an APK is analyzed, it gets moved from the apks_folder to this folder
+**apks_analyzed_dir** => The folder that will contain the already analyzed .apk files. Each time an APK is analyzed, it gets moved from the apks_folder to this folder
 
 **save_analyzed_apks** => If false, the .apk files gets removed instead of being moved to the apks_analyzed folder
 
@@ -82,15 +78,16 @@ Note that this software is process-safe, meaning that you can start multiple ins
 
 **logging** => Used to config logging capabilities, see [here](https://docs.python.org/3/howto/logging.html)
 
-### dbconfig.json
-Used if key_dump is set to _remote_
+**key_dump** => Can be **local** or **mongodb**. If local, the detected API Keys are dumped as json objects in the configured local_dump_file json file. If mongodb, then 
 
-**name** => Name of the MongoDB 3.+ database
+**local.dump_file** => If key_dump is set to local, the destination file where the API Keys should be dumped
 
-**address** => Address of the MongoDB 3.+ database
+**mongodb.name** => Used if key_dump is set to mongodb; name of the MongoDB 3.+ database
 
-**port** => Port to which to contact the MongoDB 3.+ database (default 27017)
+**mongodb.address** => Address of the MongoDB 3.+ database
 
-**user** => Database credentials
+**mongodb.port** => Port to which to contact the MongoDB 3.+ database (default 27017)
 
-**password** => Database credentials
+**mongodb.user** => Database credentials
+
+**mongodb.password** => Database credentials

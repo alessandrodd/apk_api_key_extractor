@@ -8,9 +8,9 @@ from flufl.lock import Lock, AlreadyLockedError, TimeOutError
 from pymongo.errors import AutoReconnect
 from retry_decorator import retry
 
-from config import conf, dbconf
+import config 
 
-dest = conf.key_dump
+dest = config.key_dump
 dump = None
 collection = None
 
@@ -81,15 +81,15 @@ def remove_apikey(api_id):
 
 
 # check if it's an HTTP address or local path
-if dest == 'remote':
+if dest == 'mongodb':
     # remote dump location
-    client = pymongo.MongoClient(dbconf.address, int(dbconf.port), username=dbconf.user, password=dbconf.password)
-    db = client[dbconf.name]
+    client = pymongo.MongoClient(config.mongodb.address, int(config.mongodb.port), username=config.mongodb.user, password=config.mongodb.password)
+    db = client[config.mongodb.name]
     collection = db[COLLECTION_NAME]
     dump = dump_to_mongodb
 
 elif dest == 'local':
-    dest = os.path.abspath(conf.local_dump_file)
+    dest = os.path.abspath(config.local.dump_file)
     dump = dump_to_file
 else:
-    logging.error("INVALID destination type: {0} (expected remote or local)".format(dest))
+    logging.error("INVALID destination type: {0} (expected mongodb or local)".format(dest))

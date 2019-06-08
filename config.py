@@ -1,19 +1,14 @@
 """
 Singleton implementation for config objects
 """
-import logging
 import os
-
-from my_tools import config_parser
+import yaml
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-CONFIG_PATH = "config.json"
-DB_CONFIG_PATH = "dbconfig.json"
+CONFIG_PATH = "config.yml"
 
-conf = config_parser.parse(os.path.join(__location__, CONFIG_PATH))
-dbconf = None
-try:
-    dbconf = config_parser.parse(os.path.join(__location__, DB_CONFIG_PATH))
-except FileNotFoundError:
-    logging.warning("Missing database configuration ({0})".format(DB_CONFIG_PATH))
+with open(os.path.join(__location__, CONFIG_PATH), 'r') as ymlfile:
+    cfg = yaml.load(ymlfile)
+    # Load the yaml content into this module global variables
+    globals().update(cfg)

@@ -1,0 +1,20 @@
+apks_dir: apks
+apks_decoded_dir: apks_decoded
+apks_analyzed_dir: apks_analyzed
+save_analyzed_apks: true
+apktool: apktool.jar
+lib_blacklists:
+        - lib_blacklist.txt
+shared_object_sections:
+        - .rodata
+        - .text
+key_dump: local
+# which of the following configuration will be used depends on the key_dump value
+local:
+        dump_file: apikey.json
+mongodb:
+        name: mytestdb
+        address: 127.0.0.1
+        port: 27017
+        user: api_key_extractor
+        password: alessandrodd

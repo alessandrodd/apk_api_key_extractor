@@ -1,18 +1,23 @@
 #!/usr/bin/env python3
 import argparse
 import logging
+import logging.config
 import os
 import shutil
 import sys
 import time
-from logging.config import dictConfig
+import json
+import config
 
+LOG_CONFIG_PATH = "log_config.json"
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 sys.path.insert(1, os.path.join(__location__, "api_key_detector"))
 
-from config import conf
+# Configure logging
+with open(os.path.join(__location__, LOG_CONFIG_PATH), "r", encoding="utf-8") as fd:
+    log_config = json.load(fd)
+    logging.config.dictConfig(log_config["logging"])
 
-dictConfig(conf.logging)
 import db_interface
 import apk_analyzer
 
@@ -101,15 +106,15 @@ def main():
     if results.boolean_debug:
         logging.basicConfig(level=logging.DEBUG)
     elif results.apk_path:
-        analyze_apk(results.apk_path, os.path.abspath(conf.apks_decoded),
-                    None, os.path.abspath(conf.apktool), dump_to_db=False, dump_all_strings=False, remove_apk=False)
+        analyze_apk(results.apk_path, os.path.abspath(config.apks_decoded_dir),
+                    None, os.path.abspath(config.apktool), dump_to_db=False, dump_all_strings=False, remove_apk=False)
         return
     elif results.boolean_monitor:
-        apks_analyzed = None
-        if conf.save_analyzed_apks:
-            apks_analyzed = os.path.abspath(conf.apks_analyzed)
-        monitor_apks_folder(os.path.abspath(conf.apks_folder), os.path.abspath(conf.apks_decoded),
-                            apks_analyzed, os.path.abspath(conf.apktool))
+        apks_analyzed_dir = None
+        if config.save_analyzed_apks:
+            apks_analyzed_dir = os.path.abspath(config.apks_analyzed_dir)
+        monitor_apks_folder(os.path.abspath(config.apks_dir), os.path.abspath(config.apks_decoded_dir),
+                            apks_analyzed_dir, os.path.abspath(config.apktool))
         return
     parser.print_help()
 
