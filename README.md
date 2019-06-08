@@ -21,6 +21,7 @@ pip3 install -r requirements.txt
 ```bash
 $ git clone --recursive https://github.com/alessandrodd/apk_api_key_extractor.git
 $ cd apk_api_key_extractor
+$ cp config.example.yml config.yml
 $ pip3 install -r requirements.txt
 $ python3 main.py
 ```

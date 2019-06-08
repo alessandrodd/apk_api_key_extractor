@@ -1,5 +1,6 @@
 # Custom additions
 .idea/
+config.yml
 apks/*
 apks_decoded/*
 apks_analyzed/*
