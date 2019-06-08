@@ -51,15 +51,15 @@ def clean_resources(apk_path, lock, decoded_apk_output_path, apks_analyzed_dir, 
                 os.remove(lockfile)
 
 
-def analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, lock=None, dump=True, remove_apk=False):
+def analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, lock=None, dump_to_db=True, dump_all_strings=False, remove_apk=False):
     apk = os.path.basename(apk_path)
     decoded_output_path = os.path.join(apks_decoded_dir, apk)
     try:
-        apikeys, package, version_code, version_name = apk_analyzer.analyze_apk(apk_path, decoded_output_path,
+        apikeys, all_strings, package, version_code, version_name = apk_analyzer.analyze_apk(apk_path, decoded_output_path,
                                                                                 apktool_path)
-        if apikeys and dump:
+        if apikeys and dump_to_db:
             db_interface.dump(apikeys, package, version_code, version_name)
-        elif apikeys and not dump:
+        elif apikeys and not dump_to_db:
             print(apikeys)
     except apk_analyzer.ApkAnalysisError as e:
         logging.error(str(e))
@@ -73,7 +73,7 @@ def monitor_apks_folder(apks_dir, apks_decoded_dir, apks_analyzed_dir, apktool_p
             apk_path, lock = apk_analyzer.get_next_apk(apks_dir)
             if lock is not None:
                 logging.info("Detected {0}".format(apk_path))
-                analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, lock, True, True)
+                analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, lock, True, False, True)
                 logging.info("{0} analyzed".format(apk_path))
             else:
                 time.sleep(1)
@@ -102,7 +102,7 @@ def main():
         logging.basicConfig(level=logging.DEBUG)
     elif results.apk_path:
         analyze_apk(results.apk_path, os.path.abspath(conf.apks_decoded),
-                    None, os.path.abspath(conf.apktool), dump=False, remove_apk=False)
+                    None, os.path.abspath(conf.apktool), dump_to_db=False, dump_all_strings=False, remove_apk=False)
         return
     elif results.boolean_monitor:
         apks_analyzed = None

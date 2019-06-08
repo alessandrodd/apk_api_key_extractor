@@ -257,7 +257,7 @@ def analyze_decoded_apk(decoded_apk_folder):
     for mystring in apikey_strings:
         if s_filter.post_filter_mystring(mystring):
             apikey_postfiltered.append(mystring)
-    return apikey_postfiltered, package, version_code, version_name
+    return apikey_postfiltered, extracted, package, version_code, version_name
 
 
 def decode_apk(apk_path, output_path, apktool_path):
