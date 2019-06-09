@@ -91,7 +91,7 @@ def monitor_apks_folder(apks_dir, apks_decoded_dir, apks_analyzed_dir, apktool_p
             apk_path, lock = apk_analyzer.get_next_apk(apks_dir)
             if lock is not None:
                 logging.info("Detected {0}".format(apk_path))
-                analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, lock, True, False, True)
+                analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, lock)
                 logging.info("{0} analyzed".format(apk_path))
             else:
                 time.sleep(1)
