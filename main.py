@@ -11,7 +11,6 @@ import config
 
 LOG_CONFIG_PATH = "log_config.json"
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-sys.path.insert(1, os.path.join(__location__, "api_key_detector"))
 
 # Configure logging
 with open(os.path.join(__location__, LOG_CONFIG_PATH), "r", encoding="utf-8") as fd:

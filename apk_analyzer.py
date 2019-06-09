@@ -6,11 +6,11 @@ import os
 import subprocess
 
 import numpy as np
-import string_classifier
-from classifier_singleton import classifier
+from api_key_detector import string_classifier
+from api_key_detector.classifier_singleton import classifier
 from elftools.common.exceptions import ELFError
 from flufl.lock import Lock, AlreadyLockedError, TimeOutError
-from strings_filter_singleton import s_filter
+from api_key_detector.strings_filter_singleton import s_filter
 
 import config
 from my_model.lib_string import LibString
