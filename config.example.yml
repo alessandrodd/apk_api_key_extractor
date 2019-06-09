@@ -8,10 +8,13 @@ lib_blacklists:
 shared_object_sections:
         - .rodata
         - .text
-key_dump: local
+dump_all_strings: false
+# possible values: console, jsonlines, mongodb
+dump_location: console
 # which of the following configuration will be used depends on the key_dump value
-local:
-        dump_file: apikey.json
+jsonlines:
+        dump_file: apikey.jsonl
+        strings_file: all_strings.jsonl
 mongodb:
         name: mytestdb
         address: 127.0.0.1

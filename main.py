@@ -7,6 +7,11 @@ import shutil
 import sys
 import time
 import json
+
+from console_dump import ConsoleDump
+from mongodb_dump import MongoDBDump
+from json_dump import JsonDump
+
 import config
 
 LOG_CONFIG_PATH = "log_config.json"
@@ -17,7 +22,6 @@ with open(os.path.join(__location__, LOG_CONFIG_PATH), "r", encoding="utf-8") as
     log_config = json.load(fd)
     logging.config.dictConfig(log_config["logging"])
 
-import db_interface
 import apk_analyzer
 
 
@@ -55,19 +59,29 @@ def clean_resources(apk_path, lock, decoded_apk_output_path, apks_analyzed_dir, 
                 os.remove(lockfile)
 
 
-def analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, lock=None, dump_to_db=True, dump_all_strings=False, remove_apk=False):
+def analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, lock=None):
     apk = os.path.basename(apk_path)
     decoded_output_path = os.path.join(apks_decoded_dir, apk)
     try:
         apikeys, all_strings, package, version_code, version_name = apk_analyzer.analyze_apk(apk_path, decoded_output_path,
                                                                                 apktool_path)
-        if apikeys and dump_to_db:
-            db_interface.dump(apikeys, package, version_code, version_name)
-        elif apikeys and not dump_to_db:
-            print(apikeys)
+        if apikeys:
+            dump = None
+            if config.dump_location == "console":
+                dump = ConsoleDump()
+            elif config.dump_location == "jsonlines":
+                dump = JsonDump()
+            elif config.dump_location == "mongodb":
+                dump = MongoDBDump()
+            else:
+                print("Unrecognized dump location: {0}".format(config.dump_location))
+                exit(1)
+            dump.dump_apikeys(apikeys, package, version_code, version_name)
+            if config.dump_all_strings:
+                dump.dump_strings(all_strings)
     except apk_analyzer.ApkAnalysisError as e:
         logging.error(str(e))
-    clean_resources(apk_path, lock, decoded_output_path, apks_analyzed_dir, remove_apk)
+    clean_resources(apk_path, lock, decoded_output_path, apks_analyzed_dir, not config.save_analyzed_apks)
 
 
 def monitor_apks_folder(apks_dir, apks_decoded_dir, apks_analyzed_dir, apktool_path):
@@ -106,7 +120,7 @@ def main():
         logging.basicConfig(level=logging.DEBUG)
     elif results.apk_path:
         analyze_apk(results.apk_path, os.path.abspath(config.apks_decoded_dir),
-                    None, os.path.abspath(config.apktool), dump_to_db=False, dump_all_strings=False, remove_apk=False)
+                    None, os.path.abspath(config.apktool))
         return
     elif results.boolean_monitor:
         apks_analyzed_dir = None

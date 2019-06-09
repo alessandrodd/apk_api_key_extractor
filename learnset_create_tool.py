@@ -6,7 +6,7 @@ import sys
 
 from words_finder_singleton import finder
 
-from db_interface import get_apikey_unverified, remove_apikey, set_apikey_verified
+from mongodb_dump import MongoDBDump
 from my_tools.getch import getch
 
 
@@ -31,13 +31,16 @@ def main(argv):
     text_dest = open(argv[1], "a", 1)
     api_dest = open(argv[2], "a", 1)
     blk_dest = open(argv[3], "a", 1)
-    print("Press 0 if the string is NOT an API Key, 1 otherwhise\n"
+    print("Press 0 if the string is NOT an API Key, 1 otherwise\n"
           "Press b to blacklist the entry\n"
           "Press r to remove the record from database\n"
           "Press q to quit")
     try:
+
+        dump = MongoDBDump()
+
         while True:
-            api_doc = get_apikey_unverified()
+            api_doc = dump.get_apikey_unverified()
             if not api_doc:
                 print("No more keys!")
                 break
@@ -45,22 +48,22 @@ def main(argv):
                                                  api_doc.get("value")))
             x = '-1'
             if finder.get_words_percentage(api_doc.get("value")) >= 0.4:
-                remove_apikey(api_doc.get("_id"))
+                dump.remove_apikey(api_doc.get("_id"))
             else:
                 while x != '0' and x != '1' and x != 'r' and x != 'b' and x != 'q':
                     x = getch()
                     if x == '0':
-                        remove_apikey(api_doc.get("_id"))
+                        dump.remove_apikey(api_doc.get("_id"))
                         text_dest.write(newline_text + api_doc.get("value"))
                         newline_text = '\n'
                     elif x == '1':
-                        set_apikey_verified(api_doc.get("_id"))
+                        dump.set_apikey_verified(api_doc.get("_id"))
                         api_dest.write(newline_api + api_doc.get("value"))
                         newline_api = '\n'
                     elif x == 'r':
-                        remove_apikey(api_doc.get("_id"))
+                        dump.remove_apikey(api_doc.get("_id"))
                     elif x == 'b':
-                        remove_apikey(api_doc.get("_id"))
+                        dump.remove_apikey(api_doc.get("_id"))
                         blk_dest.write(newline_blk + api_doc.get("value"))
                         newline_blk = '\n'
                     elif x == 'q':

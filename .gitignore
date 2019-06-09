@@ -9,6 +9,8 @@ apks_analyzed/*
 !apks_decoded/README.md
 /string_classification/test_results/
 key_dump.json
+apikey.jsonl
+all_strings.jsonl
 *.lock
 **/__pycache__/
 
