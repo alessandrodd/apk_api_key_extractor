@@ -63,8 +63,9 @@ def analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, loc
     apk = os.path.basename(apk_path)
     decoded_output_path = os.path.join(apks_decoded_dir, apk)
     try:
-        apikeys, all_strings, package, version_code, version_name = apk_analyzer.analyze_apk(apk_path, decoded_output_path,
-                                                                                apktool_path)
+        apikeys, all_strings, package, version_code, version_name = apk_analyzer.analyze_apk(apk_path,
+                                                                                             decoded_output_path,
+                                                                                             apktool_path)
         if apikeys:
             dump = None
             if config.dump_location == "console":
