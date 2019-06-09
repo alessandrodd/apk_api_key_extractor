@@ -89,7 +89,7 @@ if dest == 'mongodb':
     dump = dump_to_mongodb
 
 elif dest == 'local':
-    dest = os.path.abspath(config.local.dump_file)
+    dest = os.path.abspath(config.local["dump_file"])
     dump = dump_to_file
 else:
     logging.error("INVALID destination type: {0} (expected mongodb or local)".format(dest))
