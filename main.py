@@ -10,7 +10,7 @@ import json
 
 from console_dump import ConsoleDump
 from mongodb_dump import MongoDBDump
-from json_dump import JsonDump
+from jsonlines_dump import JsonlinesDump
 
 import config
 
@@ -70,7 +70,7 @@ def analyze_apk(apk_path, apks_decoded_dir, apks_analyzed_dir, apktool_path, loc
             if config.dump_location == "console":
                 dump = ConsoleDump()
             elif config.dump_location == "jsonlines":
-                dump = JsonDump()
+                dump = JsonlinesDump()
             elif config.dump_location == "mongodb":
                 dump = MongoDBDump()
             else:

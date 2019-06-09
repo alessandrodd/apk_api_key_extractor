@@ -7,11 +7,12 @@ from flufl.lock import Lock, AlreadyLockedError, TimeOutError
 
 from abstract_dump import AbstractDump
 
-import config 
+import config
 
 LOCK_PREFIX = ".lock"
 
-class JsonDump(AbstractDump):
+
+class JsonlinesDump(AbstractDump):
 
     def __init__(self):
         self.dest = os.path.abspath(config.jsonlines["dump_file"])
