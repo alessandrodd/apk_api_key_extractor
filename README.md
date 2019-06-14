@@ -75,20 +75,22 @@ Note that this software is process-safe, meaning that you can start multiple ins
 
 **lib_blacklists** => Txt files containing names of the native libraries (one for each line) that should be ignored during the analysis
 
-**shared_object_sections** => Txt files containing names of the ELF sections (one for each line) that should be searched for API Keys
+**shared_object_sections** => When analyzing native libraries, all the ELF sections listed here will be searched for API Keys
 
-**logging** => Used to config logging capabilities, see [here](https://docs.python.org/3/howto/logging.html)
+**dump_all_strings** => If true, the script dumps not only API Keys but also every other string found in the APK. Useful to make a dataset of common not-api-key strings that can be used to train the model itself.
 
-**key_dump** => Can be **local** or **mongodb**. If local, the detected API Keys are dumped as json objects in the configured local_dump_file json file. If mongodb, then 
+**dump_location** => Where to dump the API Keys found (as well as every other strin, if dump_all_strings is set to true). Possible values are console (stdout), jsonlines (text files in the [jsonlines](http://jsonlines.org/) format), mongodb.
 
-**local.dump_file** => If key_dump is set to local, the destination file where the API Keys should be dumped
+**jsonlines.dump_file** => Path of the jsonlines file where the API Keys will be dumped
 
-**mongodb.name** => Used if key_dump is set to mongodb; name of the MongoDB 3.+ database
+**jsonlines.strings_file** => Path of the jsonlines file where the every string will be dumped, if dump_all_strings is true
 
-**mongodb.address** => Address of the MongoDB 3.+ database
+**mongodb.name** => Used if key_dump is set to mongodb; name of the MongoDB database
 
-**mongodb.port** => Port to which to contact the MongoDB 3.+ database (default 27017)
+**mongodb.address** => Address of the MongoDB database
 
-**mongodb.user** => Database credentials
+**mongodb.port** => Port to which to contact the MongoDB database (default 27017)
 
-**mongodb.password** => Database credentials
+**mongodb.user** => MongoDB database credentials
+
+**mongodb.password** => MongoDB database credentials
