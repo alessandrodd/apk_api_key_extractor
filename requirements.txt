@@ -9,4 +9,4 @@ plotly==2.2.1
 flufl.lock==3.2
 pyelftools==0.24
 scikit_learn==0.19.1
-PyYAML==3.12
+pyyaml>=4.2b1
