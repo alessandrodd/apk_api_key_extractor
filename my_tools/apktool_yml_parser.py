@@ -18,7 +18,7 @@ class ApktoolYmlParser(object):
             line = f.readline()
             if not line.startswith("!!"):
                 f.seek(0)
-            self.doc = yaml.load(f)
+            self.doc = yaml.safe_load(f)
 
     def get_version_code(self):
         return self.doc['versionInfo']['versionCode']
