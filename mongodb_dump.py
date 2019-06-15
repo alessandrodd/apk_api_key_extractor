@@ -43,7 +43,11 @@ class MongoDBDump(AbstractDump):
         for entry in entries:
             operations.append(pymongo.UpdateOne({'_id': entry.value}, {'$inc': {'count': 1}}, upsert=True))
         if len(operations) > 0:
-            self.strings_collection.bulk_write(operations, ordered=False)
+            try:
+                self.strings_collection.bulk_write(operations, ordered=False)
+            except pymongo.errors.BulkWriteError as bwe:
+                print(bwe.details)
+                raise
 
     @retry(pymongo.errors.AutoReconnect, tries=5, timeout_secs=1)
     def get_apikey_unverified(self):
