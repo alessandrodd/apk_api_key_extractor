@@ -47,7 +47,11 @@ class MongoDBDump(AbstractDump):
                 self.strings_collection.bulk_write(operations, ordered=False)
             except pymongo.errors.BulkWriteError as bwe:
                 print(bwe.details)
-                raise
+                # filter out "key too large to index" exceptions, which have error code 17280
+                # we don't care about them
+                filtered_errors = filter(lambda x: x['code'] != 17280, bwe.details['writeErrors'])
+                if len(list(filtered_errors)) > 0:
+                    raise
 
     @retry(pymongo.errors.AutoReconnect, tries=5, timeout_secs=1)
     def get_apikey_unverified(self):
