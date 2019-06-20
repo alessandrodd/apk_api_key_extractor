@@ -50,9 +50,9 @@ class AndroidManifestXmlParser(object):
             for action_row in action_rows:
                 if action_row.get("{" + str(self.root.nsmap.get("android")) + "}name") == "android.intent.action.MAIN":
                     activity_name = row.get("{" + str(self.root.nsmap.get("android")) + "}name")
-                    if activity_name.startswith("."):
+                    if activity_name is not None and activity_name.startswith("."):
                         return self.get_package() + activity_name
-                    elif "." not in activity_name:
+                    elif activity_name is not None and "." not in activity_name:
                         return self.get_package() + "." + activity_name
                     return activity_name
         aliases_rows = self.root.findall('.//activity-alias')
