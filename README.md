@@ -15,6 +15,16 @@ Searches for API Keys embedded in Android String Resources, Manifest metadata, J
 ```
 pip3 install -r requirements.txt
 ```
+## Run in a docker container
+```bash
+NOTE: make sure your .APK file is in the 'apks' folder.
+
+$ git clone --recursive https://github.com/faun88/apk_api_key_extractor.git
+$ cd apk_api_key_extractor
+$ docker build -t apk_key_extractor:latest .
+$ docker run -it apk_key_extractor:latest
+
+Rebuild your image when you've added other .apk's in your 'apks' folder.
 
 ## Installation
 

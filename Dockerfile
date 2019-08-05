@@ -10,7 +10,6 @@ RUN \
   cd apk_api_key_extractor && \
   cp config.example.yml config.yml && \
   pip3 install -r requirements.txt && \
-  mkdir apks
 
 # Add files.
 COPY apks /apk_api_key_extractor/apks/
