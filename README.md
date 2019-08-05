@@ -24,7 +24,7 @@ $ cd apk_api_key_extractor
 $ docker build -t apk_key_extractor:latest .
 $ docker run -it apk_key_extractor:latest
 
-Rebuild your image when you've added other .apk's in your 'apks' folder.
+Rebuild your image when you've added other .apk's in your 'apks' folder.```
 
 ## Installation
 
