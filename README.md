@@ -15,17 +15,6 @@ Searches for API Keys embedded in Android String Resources, Manifest metadata, J
 ```
 pip3 install -r requirements.txt
 ```
-## Run in a docker container
-```bash
-NOTE: make sure your .APK file is in the 'apks' folder.
-
-$ git clone --recursive https://github.com/faun88/apk_api_key_extractor.git
-$ cd apk_api_key_extractor
-$ docker build -t apk_key_extractor:latest .
-$ docker run -it apk_key_extractor:latest
-
-Rebuild your image when you've added other .apk's in your 'apks' folder.
-```
 
 ## Installation
 
@@ -72,6 +61,18 @@ Using the default settings:
 
 Note that this software is process-safe, meaning that you can start multiple instances of the same script without conflicts. You can also configure the _apks_ folder as a remote folder in a Network File System (NFS) to parallelize the analysis on multiple hosts.
 
+## Run in a docker container
+```bash
+NOTE: make sure your .APK file is in the 'apks' folder.
+
+$ git clone --recursive https://github.com/alessandrodd/apk_api_key_extractor.git
+$ cd apk_api_key_extractor
+$ docker build -t apk_key_extractor:latest .
+$ docker run -it apk_key_extractor:latest
+
+Rebuild your image when you've added other .apk's in your 'apks' folder.
+```
+
 ## Config File Explained
 ### config.yml
 **apks_dir** => The folder containing the .apk files to be analyzed
@@ -105,3 +106,6 @@ Note that this software is process-safe, meaning that you can start multiple ins
 **mongodb.user** => MongoDB database credentials
 
 **mongodb.password** => MongoDB database credentials
+
+# Notes
+I'm a curious guy; if you make something cool with this and you want to tell me, drop me an email at didiego.alessandro+keyextract (domain is gmail.com)
