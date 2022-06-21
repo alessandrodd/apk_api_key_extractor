@@ -1,7 +1,7 @@
 rstr==2.2.6
 lxml==4.1.0
 pymongo==3.5.1
-numpy==1.13.3
+numpy==1.22.0
 scipy==0.19.1
 retry_decorator==1.1.0
 matplotlib==2.1.0
